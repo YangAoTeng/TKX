@@ -1,0 +1,694 @@
+{
+  "name": "407_LWIP",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "Application",
+        "files": [],
+        "folders": [
+          {
+            "name": "MDK-ARM",
+            "files": [
+              {
+                "path": "MDK-ARM/startup_stm32f407xx.s"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "User",
+            "files": [
+              {
+                "path": "Src/main.c"
+              },
+              {
+                "path": "Src/gpio.c"
+              },
+              {
+                "path": "Src/freertos.c"
+              },
+              {
+                "path": "Src/lwip.c"
+              },
+              {
+                "path": "Src/ethernetif.c"
+              },
+              {
+                "path": "Src/usart.c"
+              },
+              {
+                "path": "Src/stm32f4xx_it.c"
+              },
+              {
+                "path": "Src/stm32f4xx_hal_msp.c"
+              },
+              {
+                "path": "Src/httpServer.c"
+              },
+              {
+                "path": "Src/bsp_driver_sd.c"
+              },
+              {
+                "path": "Src/dma.c"
+              },
+              {
+                "path": "Src/fatfs.c"
+              },
+              {
+                "path": "Src/fatfs_platform.c"
+              },
+              {
+                "path": "Src/sd_diskio.c"
+              },
+              {
+                "path": "Src/sdio.c"
+              },
+              {
+                "path": "Src/system_stm32f4xx.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "Drivers",
+        "files": [],
+        "folders": [
+          {
+            "name": "STM32F4xx_HAL_Driver",
+            "files": [
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
+              },
+              {
+                "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "CMSIS",
+            "files": [
+              {
+                "path": "Src/system_stm32f4xx.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "Middlewares",
+        "files": [],
+        "folders": [
+          {
+            "name": "LwIP",
+            "files": [
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/auth.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/ccp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/chap-md5.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/chap-new.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/demand.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/eap.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/eui64.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/fsm.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/ipcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/lcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/magic.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/mppe.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/multilink.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/ppp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/pppapi.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/pppcrypt.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/pppoe.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/pppol2tp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/pppos.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/upap.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/utils.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/vj.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/bridgeif.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/bridgeif_fdb.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ethernet.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/lowpan6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/lowpan6_ble.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/lowpan6_common.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/slipif.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/zepif.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/netif/ppp/ecp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/api_lib.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/api_msg.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/err.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/if_api.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/netbuf.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/netdb.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/netifapi.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/sockets.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/api/tcpip.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/altcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/altcp_alloc.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/altcp_tcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/def.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/dns.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/inet_chksum.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/init.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ip.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/mem.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/memp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/netif.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/pbuf.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/raw.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/stats.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/sys.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/tcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/tcp_in.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/tcp_out.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/timeouts.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/udp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/autoip.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/icmp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/igmp.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_addr.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/dhcp6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/ethip6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/icmp6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/inet6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/ip6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_addr.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_frag.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/mld6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/core/ipv6/nd6.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/system/OS/sys_arch.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "FreeRTOS",
+            "files": [
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/croutine.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/list.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/queue.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/tasks.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/timers.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "FatFs",
+            "files": [
+              {
+                "path": "Middlewares/Third_Party/FatFs/src/diskio.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FatFs/src/ff.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FatFs/src/ff_gen_drv.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FatFs/src/option/cc936.c"
+              },
+              {
+                "path": "Middlewares/Third_Party/FatFs/src/option/syscall.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "81c76741d83f36b9f32f12c35e437b55"
+  },
+  "targets": {
+    "407_LWIP": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
+        "scatterFilePath": "",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x20000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x10000000",
+                "size": "0x10000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x80000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "JLink",
+      "uploadConfig": {
+        "bin": "",
+        "baseAddr": "",
+        "cpuInfo": {
+          "vendor": "ST",
+          "cpuName": "STM32F407VE"
+        },
+        "proType": 1,
+        "speed": 8000,
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f4x",
+          "interface": "cmsis-dap-v1",
+          "baseAddr": "0x08000000"
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "Inc",
+          "Middlewares/Third_Party/LwIP/src/include",
+          "Middlewares/Third_Party/LwIP/system",
+          "Drivers/STM32F4xx_HAL_Driver/Inc",
+          "Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+          "Middlewares/Third_Party/LwIP/src/include/netif/ppp",
+          "Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+          "Middlewares/Third_Party/LwIP/src/include/lwip",
+          "Middlewares/Third_Party/LwIP/src/include/lwip/apps",
+          "Middlewares/Third_Party/LwIP/src/include/lwip/priv",
+          "Middlewares/Third_Party/LwIP/src/include/lwip/prot",
+          "Middlewares/Third_Party/LwIP/src/include/netif",
+          "Middlewares/Third_Party/LwIP/src/include/compat/posix",
+          "Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa",
+          "Middlewares/Third_Party/LwIP/src/include/compat/posix/net",
+          "Middlewares/Third_Party/LwIP/src/include/compat/posix/sys",
+          "Middlewares/Third_Party/LwIP/src/include/compat/stdc",
+          "Middlewares/Third_Party/LwIP/system/arch",
+          "Drivers/CMSIS/Include",
+          "Middlewares/Third_Party/FreeRTOS/Source/include",
+          "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+          "Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F",
+          ".cmsis/include",
+          "MDK-ARM/RTE/_407_LWIP",
+          "Middlewares/Third_Party/FatFs/src"
+        ],
+        "libList": [],
+        "defineList": [
+          "USE_HAL_DRIVER",
+          "STM32F407xx"
+        ]
+      },
+      "builderOptions": {
+        "AC5": {
+          "version": 4,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [],
+          "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable"
+          },
+          "c/cpp-compiler": {
+            "optimization": "level-3",
+            "one-elf-section-per-function": true,
+            "c99-mode": true,
+            "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "warnings": "all-warnings"
+          },
+          "asm-compiler": {},
+          "linker": {
+            "output-format": "elf",
+            "xo-base": "",
+            "ro-base": "",
+            "rw-base": ""
+          }
+        }
+      }
+    }
+  },
+  "version": "3.5"
+}

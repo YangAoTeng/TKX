@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED控制</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>LED灯带控制面板</h1>
+        
+        <div class="brightness-control">
+            <label>亮度控制: <span>{{ brightness }}%</span></label>
+            <input type="range" v-model="brightness" class="slider" 
+                   min="0" max="100" @input="updateBrightness">
+        </div>
+        
+        <div>
+            <label>颜色选择:</label><br>
+            <input type="color" v-model="selectedColor" class="colorPicker">
+        </div>
+        
+        <div>
+            <button class="btn-color" @click="setColor">设置颜色</button>
+            <button class="btn-rainbow" @click="startRainbow">彩虹模式</button>
+            <button class="btn-random" @click="setRandom">随机颜色</button>
+        </div>
+        
+        <div class="status" :class="{ 'error': isError }">{{ statusMessage }}</div>
+
+        <!-- 显示实时数据 -->
+        <div class="sensor-data" v-if="sensorData">
+            <h2>实时数据</h2>
+            <p>温度: {{ sensorData.temperature }}°C</p>
+            <p>湿度: {{ sensorData.humidity }}%</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
