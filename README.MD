@@ -10,7 +10,7 @@
 4. TKX_EEPROM_OLED
     - OLED/EEPROM，已验证完成。
 5. TKX_ESP01S
-    - F407与ESP8266通信，移植AT-Command框架，已完成验证。
+    - F407与ESP8266通信，移植AT-Command https://gitee.com/moluo-tech/AT-Command 框架，已完成验证。
     - 下一步完成ymodem串口升级。
     - 完成ESP01S升级天空星程序。
 6. TKX_IIS
