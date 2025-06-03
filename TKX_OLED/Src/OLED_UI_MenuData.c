@@ -1,147 +1,147 @@
 #include "OLED_UI_MenuData.h"
 #include "OLED_UI.h"
 
-/*´ËÎÄ¼şÓÃÓÚ´æ·Å²Ëµ¥Êı¾İ¡£Êµ¼ÊÉÏ²Ëµ¥Êı¾İ¿ÉÒÔ´æ·ÅÔÚÈÎºÎµØ·½£¬´æ·ÅÓÚ´Ë´¦ÊÇÎªÁË¹æ·¶Óë´úÂëÄ£¿é»¯*/
+/*æ­¤æ–‡ä»¶ç”¨äºå­˜æ”¾èœå•æ•°æ®ã€‚å®é™…ä¸Šèœå•æ•°æ®å¯ä»¥å­˜æ”¾åœ¨ä»»ä½•åœ°æ–¹ï¼Œå­˜æ”¾äºæ­¤å¤„æ˜¯ä¸ºäº†è§„èŒƒä¸ä»£ç æ¨¡å—åŒ–*/
 
-// ColorMode ÊÇÒ»¸öÔÚOLED_UIµ±ÖĞ¶¨ÒåµÄboolÀàĞÍ±äÁ¿£¬ÓÃÓÚ¿ØÖÆOLEDÏÔÊ¾µÄÑÕÉ«Ä£Ê½£¬ DARKMODE ÎªÉîÉ«Ä£Ê½£¬ LIGHTMOOD ÎªÇ³É«Ä£Ê½¡£ÕâÀï½«ÆäÒı³öÊÇÎªÁË´´½¨µ¥Ñ¡¿ò²Ëµ¥Ïî¡£
+// ColorMode æ˜¯ä¸€ä¸ªåœ¨OLED_UIå½“ä¸­å®šä¹‰çš„boolç±»å‹å˜é‡ï¼Œç”¨äºæ§åˆ¶OLEDæ˜¾ç¤ºçš„é¢œè‰²æ¨¡å¼ï¼Œ DARKMODE ä¸ºæ·±è‰²æ¨¡å¼ï¼Œ LIGHTMOOD ä¸ºæµ…è‰²æ¨¡å¼ã€‚è¿™é‡Œå°†å…¶å¼•å‡ºæ˜¯ä¸ºäº†åˆ›å»ºå•é€‰æ¡†èœå•é¡¹ã€‚
 extern bool ColorMode;
 extern bool OLED_UI_ShowFps;
-// OLED_UI_Brightness ÊÇÒ»¸öÔÚOLED_UIµ±ÖĞ¶¨ÒåµÄint16_tÀàĞÍ±äÁ¿£¬ÓÃÓÚ¿ØÖÆOLEDÏÔÊ¾µÄÁÁ¶È¡£ÕâÀï½«ÆäÒı³öÊÇÎªÁË´´½¨µ÷ÕûÁÁ¶ÈµÄ»¬¶¯Ìõ´°¿Ú£¬·¶Î§0-255¡£
+// OLED_UI_Brightness æ˜¯ä¸€ä¸ªåœ¨OLED_UIå½“ä¸­å®šä¹‰çš„int16_tç±»å‹å˜é‡ï¼Œç”¨äºæ§åˆ¶OLEDæ˜¾ç¤ºçš„äº®åº¦ã€‚è¿™é‡Œå°†å…¶å¼•å‡ºæ˜¯ä¸ºäº†åˆ›å»ºè°ƒæ•´äº®åº¦çš„æ»‘åŠ¨æ¡çª—å£ï¼ŒèŒƒå›´0-255ã€‚
 extern int16_t OLED_UI_Brightness;
 float testfloatnum = 0.5;
 int32_t testintnum = 1;
 #define SPEED 10
 
-//¹ØÓÚ´°¿ÚµÄ½á¹¹Ìå
+//å…³äºçª—å£çš„ç»“æ„ä½“
 MenuWindow SetBrightnessWindow = {
-	.General_Width = 80,								//´°¿Ú¿í¶È
-	.General_Height = 28, 							//´°¿Ú¸ß¶È
-	.Text_String = "ÆÁÄ»ÁÁ¶ÈÆÁÄ»ÁÁ¶È",					//´°¿Ú±êÌâ
-	.Text_FontSize = OLED_UI_FONT_12,				//×Ö¸ß
-	.Text_FontSideDistance = 4,							//×ÖÌå¾àÀë×ó²àµÄ¾àÀë
-	.Text_FontTopDistance = 3,							//×ÖÌå¾àÀë¶¥²¿µÄ¾àÀë
-	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//´°¿ÚÀàĞÍ
-	.General_ContinueTime = 4.0,						//´°¿Ú³ÖĞøÊ±¼ä
+	.General_Width = 80,								//çª—å£å®½åº¦
+	.General_Height = 28, 							//çª—å£é«˜åº¦
+	.Text_String = "å±å¹•äº®åº¦å±å¹•äº®åº¦",					//çª—å£æ ‡é¢˜
+	.Text_FontSize = OLED_UI_FONT_12,				//å­—é«˜
+	.Text_FontSideDistance = 4,							//å­—ä½“è·ç¦»å·¦ä¾§çš„è·ç¦»
+	.Text_FontTopDistance = 3,							//å­—ä½“è·ç¦»é¡¶éƒ¨çš„è·ç¦»
+	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//çª—å£ç±»å‹
+	.General_ContinueTime = 4.0,						//çª—å£æŒç»­æ—¶é—´
 
-	.Prob_Data_Int_16 = &OLED_UI_Brightness,				//ÏÔÊ¾µÄ±äÁ¿µØÖ·
-	.Prob_DataStep = 5,								//²½³¤
-	.Prob_MinData = 5,									//×îĞ¡Öµ
-	.Prob_MaxData = 255, 								//×î´óÖµ
-	.Prob_BottomDistance = 3,							//µ×²¿¼ä¾à
-	.Prob_LineHeight = 8,								//½ø¶ÈÌõ¸ß¶È
-	.Prob_SideDistance = 4,								//±ß¾à
+	.Prob_Data_Int_16 = &OLED_UI_Brightness,				//æ˜¾ç¤ºçš„å˜é‡åœ°å€
+	.Prob_DataStep = 5,								//æ­¥é•¿
+	.Prob_MinData = 5,									//æœ€å°å€¼
+	.Prob_MaxData = 255, 								//æœ€å¤§å€¼
+	.Prob_BottomDistance = 3,							//åº•éƒ¨é—´è·
+	.Prob_LineHeight = 8,								//è¿›åº¦æ¡é«˜åº¦
+	.Prob_SideDistance = 4,								//è¾¹è·
 };
 /**
- * @brief ´´½¨ÏÔÊ¾ÁÁ¶È´°¿Ú
+ * @brief åˆ›å»ºæ˜¾ç¤ºäº®åº¦çª—å£
  */
 void BrightnessWindow(void){
 	OLED_UI_CreateWindow(&SetBrightnessWindow);
 }
-//¹ØÓÚ´°¿ÚµÄ½á¹¹Ìå
+//å…³äºçª—å£çš„ç»“æ„ä½“
 MenuWindow NullWindow = {
-	.General_Width = 80,								//´°¿Ú¿í¶È
-	.General_Height = 28, 							//´°¿Ú¸ß¶È
-	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//´°¿ÚÀàĞÍ
-	.General_ContinueTime = 4.0,						//´°¿Ú³ÖĞøÊ±¼ä
+	.General_Width = 80,								//çª—å£å®½åº¦
+	.General_Height = 28, 							//çª—å£é«˜åº¦
+	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//çª—å£ç±»å‹
+	.General_ContinueTime = 4.0,						//çª—å£æŒç»­æ—¶é—´
 };
 /**
- * @brief ´´½¨ÏÔÊ¾ÁÁ¶È´°¿Ú
+ * @brief åˆ›å»ºæ˜¾ç¤ºäº®åº¦çª—å£
  */
 void EmptyWindow(void){
 	OLED_UI_CreateWindow(&NullWindow);
 }
-//¹ØÓÚ´°¿ÚµÄ½á¹¹Ìå
+//å…³äºçª—å£çš„ç»“æ„ä½“
 MenuWindow TextWindow = {
-	.General_Width = 75,								//´°¿Ú¿í¶È
-	.General_Height = 18, 							//´°¿Ú¸ß¶È
-	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//´°¿ÚÀàĞÍ
-	.General_ContinueTime = 4.0,						//´°¿Ú³ÖĞøÊ±¼ä
+	.General_Width = 75,								//çª—å£å®½åº¦
+	.General_Height = 18, 							//çª—å£é«˜åº¦
+	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//çª—å£ç±»å‹
+	.General_ContinueTime = 4.0,						//çª—å£æŒç»­æ—¶é—´
 
-	.Text_String = "ÎÄ×Ötext",					//´°¿Ú±êÌâ
-	.Text_FontSize = OLED_UI_FONT_12,				//×Ö¸ß
-	.Text_FontSideDistance = 8,							//×ÖÌå¾àÀë×ó²àµÄ¾àÀë
-	.Text_FontTopDistance = 2,							//×ÖÌå¾àÀë¶¥²¿µÄ¾àÀë
+	.Text_String = "æ–‡å­—text",					//çª—å£æ ‡é¢˜
+	.Text_FontSize = OLED_UI_FONT_12,				//å­—é«˜
+	.Text_FontSideDistance = 8,							//å­—ä½“è·ç¦»å·¦ä¾§çš„è·ç¦»
+	.Text_FontTopDistance = 2,							//å­—ä½“è·ç¦»é¡¶éƒ¨çš„è·ç¦»
 	
 
 };
 /**
- * @brief ´´½¨ÏÔÊ¾ÁÁ¶È´°¿Ú
+ * @brief åˆ›å»ºæ˜¾ç¤ºäº®åº¦çª—å£
  */
 void ShowTextWindow(void){
 	OLED_UI_CreateWindow(&TextWindow);
 }
-//¹ØÓÚ´°¿ÚµÄ½á¹¹Ìå
+//å…³äºçª—å£çš„ç»“æ„ä½“
 MenuWindow FloatDataWindow = {
-	.General_Width = 80,								//´°¿Ú¿í¶È
-	.General_Height = 28, 							//´°¿Ú¸ß¶È
-	.Text_String = "¸¡µãÊı¾İ²âÊÔ",					//´°¿Ú±êÌâ
-	.Text_FontSize = OLED_UI_FONT_12,				//×Ö¸ß
-	.Text_FontSideDistance = 4,							//×ÖÌå¾àÀë×ó²àµÄ¾àÀë
-	.Text_FontTopDistance = 3,							//×ÖÌå¾àÀë¶¥²¿µÄ¾àÀë
-	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//´°¿ÚÀàĞÍ
-	.General_ContinueTime = 4.0,						//´°¿Ú³ÖĞøÊ±¼ä
+	.General_Width = 80,								//çª—å£å®½åº¦
+	.General_Height = 28, 							//çª—å£é«˜åº¦
+	.Text_String = "æµ®ç‚¹æ•°æ®æµ‹è¯•",					//çª—å£æ ‡é¢˜
+	.Text_FontSize = OLED_UI_FONT_12,				//å­—é«˜
+	.Text_FontSideDistance = 4,							//å­—ä½“è·ç¦»å·¦ä¾§çš„è·ç¦»
+	.Text_FontTopDistance = 3,							//å­—ä½“è·ç¦»é¡¶éƒ¨çš„è·ç¦»
+	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//çª—å£ç±»å‹
+	.General_ContinueTime = 4.0,						//çª—å£æŒç»­æ—¶é—´
 
-	.Prob_Data_Float = &testfloatnum,				//ÏÔÊ¾µÄ±äÁ¿µØÖ·
-	.Prob_DataStep = 0.1,								//²½³¤
-	.Prob_MinData = -100,									//×îĞ¡Öµ
-	.Prob_MaxData = 100, 								//×î´óÖµ
-	.Prob_BottomDistance = 3,							//µ×²¿¼ä¾à
-	.Prob_LineHeight = 8,								//½ø¶ÈÌõ¸ß¶È
+	.Prob_Data_Float = &testfloatnum,				//æ˜¾ç¤ºçš„å˜é‡åœ°å€
+	.Prob_DataStep = 0.1,								//æ­¥é•¿
+	.Prob_MinData = -100,									//æœ€å°å€¼
+	.Prob_MaxData = 100, 								//æœ€å¤§å€¼
+	.Prob_BottomDistance = 3,							//åº•éƒ¨é—´è·
+	.Prob_LineHeight = 8,								//è¿›åº¦æ¡é«˜åº¦
 	.Prob_SideDistance = 4,	
 };
 /**
- * @brief ´´½¨ÏÔÊ¾ÁÁ¶È´°¿Ú
+ * @brief åˆ›å»ºæ˜¾ç¤ºäº®åº¦çª—å£
  */
 void ShowFloatDataWindow(void){
 	OLED_UI_CreateWindow(&FloatDataWindow);
 }
-//¹ØÓÚ´°¿ÚµÄ½á¹¹Ìå
+//å…³äºçª—å£çš„ç»“æ„ä½“
 MenuWindow IntDataWindow = {
-	.General_Width = 80,								//´°¿Ú¿í¶È
-	.General_Height = 28, 							//´°¿Ú¸ß¶È
-	.Text_String = "ÕûÊıÊı¾İ²âÊÔ",					//´°¿Ú±êÌâ
-	.Text_FontSize = OLED_UI_FONT_12,				//×Ö¸ß
-	.Text_FontSideDistance = 4,							//×ÖÌå¾àÀë×ó²àµÄ¾àÀë
-	.Text_FontTopDistance = 3,							//×ÖÌå¾àÀë¶¥²¿µÄ¾àÀë
-	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//´°¿ÚÀàĞÍ
-	.General_ContinueTime = 4.0,						//´°¿Ú³ÖĞøÊ±¼ä
+	.General_Width = 80,								//çª—å£å®½åº¦
+	.General_Height = 28, 							//çª—å£é«˜åº¦
+	.Text_String = "æ•´æ•°æ•°æ®æµ‹è¯•",					//çª—å£æ ‡é¢˜
+	.Text_FontSize = OLED_UI_FONT_12,				//å­—é«˜
+	.Text_FontSideDistance = 4,							//å­—ä½“è·ç¦»å·¦ä¾§çš„è·ç¦»
+	.Text_FontTopDistance = 3,							//å­—ä½“è·ç¦»é¡¶éƒ¨çš„è·ç¦»
+	.General_WindowType = WINDOW_ROUNDRECTANGLE, 	//çª—å£ç±»å‹
+	.General_ContinueTime = 4.0,						//çª—å£æŒç»­æ—¶é—´
 
-	.Prob_Data_Int_32 = &testintnum,				//ÏÔÊ¾µÄ±äÁ¿µØÖ·
-	.Prob_DataStep = 1,								//²½³¤
-	.Prob_MinData = -100,									//×îĞ¡Öµ
-	.Prob_MaxData = 100, 								//×î´óÖµ
-	.Prob_BottomDistance = 3,							//µ×²¿¼ä¾à
-	.Prob_LineHeight = 8,								//½ø¶ÈÌõ¸ß¶È
+	.Prob_Data_Int_32 = &testintnum,				//æ˜¾ç¤ºçš„å˜é‡åœ°å€
+	.Prob_DataStep = 1,								//æ­¥é•¿
+	.Prob_MinData = -100,									//æœ€å°å€¼
+	.Prob_MaxData = 100, 								//æœ€å¤§å€¼
+	.Prob_BottomDistance = 3,							//åº•éƒ¨é—´è·
+	.Prob_LineHeight = 8,								//è¿›åº¦æ¡é«˜åº¦
 	.Prob_SideDistance = 4,	
 };
 /**
- * @brief ´´½¨ÏÔÊ¾ÁÁ¶È´°¿Ú
+ * @brief åˆ›å»ºæ˜¾ç¤ºäº®åº¦çª—å£
  */
 void ShowIntDataWindow(void){
 	OLED_UI_CreateWindow(&IntDataWindow);
 }
-//Ö÷LOGOÒÆ¶¯µÄ½á¹¹Ìå
+//ä¸»LOGOç§»åŠ¨çš„ç»“æ„ä½“
 OLED_ChangePoint LogoMove;
-//Ö÷LOGOÎÄ×ÖÒÆ¶¯µÄ½á¹¹Ìå
+//ä¸»LOGOæ–‡å­—ç§»åŠ¨çš„ç»“æ„ä½“
 OLED_ChangePoint LogoTextMove;
-//welcomeÎÄ×ÖÒÆ¶¯µÄ½á¹¹Ìå
+//welcomeæ–‡å­—ç§»åŠ¨çš„ç»“æ„ä½“
 OLED_ChangePoint WelcomeTextMove;
 
 extern OLED_ChangePoint OLED_UI_PageStartPoint ;
 
 
 
-//ÉèÖÃ²Ëµ¥ÏîµÄ¸¨ÖúÏÔÊ¾º¯Êı
+//è®¾ç½®èœå•é¡¹çš„è¾…åŠ©æ˜¾ç¤ºå‡½æ•°
 void SettingAuxFunc(void){
-	//ÔÚ¹æ¶¨Î»ÖÃÏÔÊ¾LOGO
+	//åœ¨è§„å®šä½ç½®æ˜¾ç¤ºLOGO
 	if(fabs(OLED_UI_PageStartPoint.CurrentPoint.X - OLED_UI_PageStartPoint.TargetPoint.X) < 4){
 		LogoMove.TargetPoint.X = 0;
 		LogoMove.TargetPoint.Y = 0;
 	}
-	//½«LOGOTEXTÒÆ¶¯µ½ÆÁÄ»ÓÒ²à¿´²»¼ûµÄµØ·½
+	//å°†LOGOTEXTç§»åŠ¨åˆ°å±å¹•å³ä¾§çœ‹ä¸è§çš„åœ°æ–¹
 	LogoTextMove.TargetPoint.X = 129;
 	LogoTextMove.TargetPoint.Y = 0;
-	//½«WelcomeÎÄ×ÖÒÆ¶¯µ½ÆÁÄ»µ×²¿¿´²»¼ûµÄµØ·½
+	//å°†Welcomeæ–‡å­—ç§»åŠ¨åˆ°å±å¹•åº•éƒ¨çœ‹ä¸è§çš„åœ°æ–¹
 	WelcomeTextMove.TargetPoint.X = 128;
 	WelcomeTextMove.TargetPoint.Y = 0;
 	ChangePoint(&LogoMove);
@@ -152,14 +152,14 @@ void SettingAuxFunc(void){
 	OLED_ShowImageArea(WelcomeTextMove.CurrentPoint.X,WelcomeTextMove.CurrentPoint.Y,16,64,0,0,128,128,OLED_UI_LOGOGithub);
 }
 
-//¹ØÓÚ²Ëµ¥µÄ¸¨ÖúÏÔÊ¾º¯Êı
+//å…³äºèœå•çš„è¾…åŠ©æ˜¾ç¤ºå‡½æ•°
 void AboutThisDeviceAuxFunc(void){
-	//½«LOGOÒÆ¶¯µ½ÆÁÄ»ÉÏ·½¿´²»¼ûµÄµØ·½
+	//å°†LOGOç§»åŠ¨åˆ°å±å¹•ä¸Šæ–¹çœ‹ä¸è§çš„åœ°æ–¹
 	LogoMove.TargetPoint.X = 0;
 	LogoMove.TargetPoint.Y = -80;
 	ChangePoint(&LogoMove);
     OLED_ShowImageArea(LogoMove.CurrentPoint.X,LogoMove.CurrentPoint.Y,32,64,0,0,128,128,OLED_UI_SettingsLogo);
-	//ÔÚÆÁÄ»ÓÒ²àÏÔÊ¾LOGOÎÄ×Ö
+	//åœ¨å±å¹•å³ä¾§æ˜¾ç¤ºLOGOæ–‡å­—
 	if(fabs(OLED_UI_PageStartPoint.CurrentPoint.X - OLED_UI_PageStartPoint.TargetPoint.X) < 4){
 		LogoTextMove.TargetPoint.X = 102;
 		LogoTextMove.TargetPoint.Y = 0;
@@ -167,14 +167,14 @@ void AboutThisDeviceAuxFunc(void){
 	ChangePoint(&LogoTextMove);
 	OLED_ShowImageArea(LogoTextMove.CurrentPoint.X,LogoTextMove.CurrentPoint.Y,26,64,0,0,128,128,OLED_UI_LOGOTEXT64);
 }
-//¹ØÓÚOLED UIµÄ¸¨ÖúÏÔÊ¾º¯Êı
+//å…³äºOLED UIçš„è¾…åŠ©æ˜¾ç¤ºå‡½æ•°
 void AboutOLED_UIAuxFunc(void){
-	//½«LOGOÒÆ¶¯µ½ÆÁÄ»ÉÏ·½¿´²»¼ûµÄµØ·½
+	//å°†LOGOç§»åŠ¨åˆ°å±å¹•ä¸Šæ–¹çœ‹ä¸è§çš„åœ°æ–¹
 	LogoMove.TargetPoint.X = 0;
 	LogoMove.TargetPoint.Y = -80;
 	ChangePoint(&LogoMove);
 	OLED_ShowImageArea(LogoMove.CurrentPoint.X,LogoMove.CurrentPoint.Y,32,64,0,0,128,128,OLED_UI_SettingsLogo);
-	//ÔÚÆÁÄ»ÓÒ²âÏÔÊ¾WelcomeÎÄ×Ö
+	//åœ¨å±å¹•å³æµ‹æ˜¾ç¤ºWelcomeæ–‡å­—
 	if(fabs(OLED_UI_PageStartPoint.CurrentPoint.X - OLED_UI_PageStartPoint.TargetPoint.X) < 4){
 		WelcomeTextMove.TargetPoint.X = 110;
 		WelcomeTextMove.TargetPoint.Y = 0;
@@ -183,9 +183,9 @@ void AboutOLED_UIAuxFunc(void){
 	OLED_ShowImageArea(WelcomeTextMove.CurrentPoint.X,WelcomeTextMove.CurrentPoint.Y,16,64,0,0,128,128,OLED_UI_LOGOGithub);
 
 }
-//Ö÷²Ëµ¥µÄ¸¨ÖúÏÔÊ¾º¯Êı
+//ä¸»èœå•çš„è¾…åŠ©æ˜¾ç¤ºå‡½æ•°
 void MainAuxFunc(void){
-	//²»ÏÔÊ¾
+	//ä¸æ˜¾ç¤º
 	LogoMove.TargetPoint.X = -200;
 	LogoMove.TargetPoint.Y = 0;
 	LogoMove.CurrentPoint.X = -200;
@@ -202,29 +202,29 @@ void MainAuxFunc(void){
 	WelcomeTextMove.CurrentPoint.Y = 0;
 }
 
-//Ö÷²Ëµ¥µÄ²Ëµ¥Ïî
+//ä¸»èœå•çš„èœå•é¡¹
 MenuItem MainMenuItems[] = {
 
 	{.General_item_text = "Settings",.General_callback = NULL,.General_SubMenuPage = &SettingsMenuPage,.Tiles_Icon = Image_setings},
 	{.General_item_text = "WeChat",.General_callback = NULL,.General_SubMenuPage = NULL,.Tiles_Icon = Image_wechat},
 	{.General_item_text = "Alipay",.General_callback = NULL,.General_SubMenuPage = NULL,.Tiles_Icon = Image_alipay},
-	{.General_item_text = "¼ÆËãÆ÷ Calc ³¤ÎÄ±¾²âÊÔ LongText",.General_callback = NULL,.General_SubMenuPage = NULL,.Tiles_Icon = Image_calc},
+	{.General_item_text = "è®¡ç®—å™¨ Calc é•¿æ–‡æœ¬æµ‹è¯• LongText",.General_callback = NULL,.General_SubMenuPage = NULL,.Tiles_Icon = Image_calc},
 	{.General_item_text = "Night",.General_callback = NULL,.General_SubMenuPage = NULL,.Tiles_Icon = Image_night},
 	{.General_item_text = "More",.General_callback = NULL,.General_SubMenuPage = &MoreMenuPage,.Tiles_Icon = Image_more},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 
 };
-//ÉèÖÃ²Ëµ¥ÏîÄÚÈİÊı×é
+//è®¾ç½®èœå•é¡¹å†…å®¹æ•°ç»„
 MenuItem SettingsMenuItems[] = {
-	{.General_item_text = "ÁÁ¶È",.General_callback = BrightnessWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ºÚ°µÄ£Ê½",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = &ColorMode},
-	{.General_item_text = "ÏÔÊ¾Ö¡ÂÊ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = &OLED_UI_ShowFps},
-	{.General_item_text = "´ËÉè±¸",.General_callback = NULL,.General_SubMenuPage = &AboutThisDeviceMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "¹ØÓÚOLED UI",.General_callback = NULL,.General_SubMenuPage = &AboutOLED_UIMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "¸ĞĞ»¹Û¿´,Ò»¼üÈıÁ¬! Thanks for watching, three clicks!",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "äº®åº¦",.General_callback = BrightnessWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "é»‘æš—æ¨¡å¼",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = &ColorMode},
+	{.General_item_text = "æ˜¾ç¤ºå¸§ç‡",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = &OLED_UI_ShowFps},
+	{.General_item_text = "æ­¤è®¾å¤‡",.General_callback = NULL,.General_SubMenuPage = &AboutThisDeviceMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å…³äºOLED UI",.General_callback = NULL,.General_SubMenuPage = &AboutOLED_UIMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "æ„Ÿè°¢è§‚çœ‹,ä¸€é”®ä¸‰è¿! Thanks for watching, three clicks!",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem AboutThisDeviceMenuItems[] = {
@@ -236,134 +236,134 @@ MenuItem AboutThisDeviceMenuItems[] = {
 	{.General_item_text = " SSD1306 128x64 OLED",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "-[CP:]",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = " HeadWare IIC",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem AboutOLED_UIMenuItems[] = {
 	{.General_item_text = "-[Author:]",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = " bilibili @ÉÏnmÍø¿ÎÄØ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = " bilibili @ä¸Šnmç½‘è¯¾å‘¢",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "-[Adress:]",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = " https://github.com/bdth-7777777/OLED_UI",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem MoreMenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "×ÖÌå¸ß¶È8demo",.General_callback = NULL,.General_SubMenuPage = &Font8MenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "×ÖÌå¸ß¶È12demo",.General_callback = NULL,.General_SubMenuPage = &Font12MenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "×ÖÌå¸ß¶È16demo",.General_callback = NULL,.General_SubMenuPage = &Font16MenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "×ÖÌå¸ß¶È20demo",.General_callback = NULL,.General_SubMenuPage = &Font20MenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "³¬³¤ÎÄ±¾demo",.General_callback = NULL,.General_SubMenuPage = &LongMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "»Øµ¯¶¯»­demo",.General_callback = NULL,.General_SubMenuPage = &SpringMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "³¬³¤²Ëµ¥ÁĞ±ídemo",.General_callback = NULL,.General_SubMenuPage = &LongListMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "³¬Ğ¡ÇøÓò²Ëµ¥demo",.General_callback = NULL,.General_SubMenuPage = &SmallAreaMenuPage,.List_BoolRadioBox = NULL},
-	{.General_item_text = "¿Õ´°¿Údemo",.General_callback = EmptyWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÎÄ×Ö´°¿Údemo",.General_callback = ShowTextWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "¸¡µãÊı½ø¶ÈÌõ´°¿Údemo",.General_callback = ShowFloatDataWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÕûÊı½ø¶ÈÌõ´°¿Údemo",.General_callback = ShowIntDataWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å­—ä½“é«˜åº¦8demo",.General_callback = NULL,.General_SubMenuPage = &Font8MenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å­—ä½“é«˜åº¦12demo",.General_callback = NULL,.General_SubMenuPage = &Font12MenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å­—ä½“é«˜åº¦16demo",.General_callback = NULL,.General_SubMenuPage = &Font16MenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å­—ä½“é«˜åº¦20demo",.General_callback = NULL,.General_SubMenuPage = &Font20MenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "è¶…é•¿æ–‡æœ¬demo",.General_callback = NULL,.General_SubMenuPage = &LongMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "å›å¼¹åŠ¨ç”»demo",.General_callback = NULL,.General_SubMenuPage = &SpringMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "è¶…é•¿èœå•åˆ—è¡¨demo",.General_callback = NULL,.General_SubMenuPage = &LongListMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "è¶…å°åŒºåŸŸèœå•demo",.General_callback = NULL,.General_SubMenuPage = &SmallAreaMenuPage,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ç©ºçª—å£demo",.General_callback = EmptyWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "æ–‡å­—çª—å£demo",.General_callback = ShowTextWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "æµ®ç‚¹æ•°è¿›åº¦æ¡çª—å£demo",.General_callback = ShowFloatDataWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "æ•´æ•°è¿›åº¦æ¡çª—å£demo",.General_callback = ShowIntDataWindow,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 MenuItem Font8MenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem Font12MenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem Font16MenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem Font20MenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem LongMenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "·Ç³£·Ç³£·Ç³£³¤ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "éå¸¸éå¸¸éå¸¸é•¿ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "Very Very Very Long English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem SpringMenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem LongListMenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "Item1",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "Item2",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "Item3",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
@@ -494,295 +494,295 @@ MenuItem LongListMenuItems[] = {
 	{.General_item_text = "Item128",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "Item129",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 MenuItem SmallAreaMenuItems[] = {
-	{.General_item_text = "[·µ»Ø]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "[è¿”å›]",.General_callback = OLED_UI_Back,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = "ÖĞÎÄÎÄ±¾",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
+	{.General_item_text = "ä¸­æ–‡æ–‡æœ¬",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "English Text",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "1234567890",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = "abcdefghijklmnopqrstuvwxyz",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
 	{.General_item_text = ",.[]!@#$+-/^&*()",.General_callback = NULL,.General_SubMenuPage = NULL,.List_BoolRadioBox = NULL},
-	{.General_item_text = NULL},/*×îºóÒ»ÏîµÄGeneral_item_textÖÃÎªNULL£¬±íÊ¾¸ÃÏîÎª·Ö¸îÏß*/
+	{.General_item_text = NULL},/*æœ€åä¸€é¡¹çš„General_item_textç½®ä¸ºNULLï¼Œè¡¨ç¤ºè¯¥é¡¹ä¸ºåˆ†å‰²çº¿*/
 };
 
 
 
 MenuPage MainMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_TILES,  		 //²Ëµ¥ÀàĞÍÎª´ÅÌùÀàĞÍ
-	.General_CursorStyle = NOT_SHOW,			 //¹â±êÀàĞÍ
-	.General_FontSize = OLED_UI_FONT_16,			//×Ö¸ß
-	.General_ParentMenuPage = NULL,				//ÓÉÓÚÕâÊÇ¸ù²Ëµ¥£¬ËùÒÔ¸¸²Ëµ¥ÎªNULL
-	.General_LineSpace = 5,						//´ÅÌù¼ä¾à µ¥Î»£ºÏñËØ£¨¶ÔÓÚ´ÅÌùÀàĞÍ²Ëµ¥£¬´ËÖµ±íÊ¾Ã¿¸ö´ÅÌùÖ®¼äµÄ¼ä¾à£¬¶ÔÓÚÁĞ±íÀàĞÍ²Ëµ¥£¬´ËÖµ±íÊ¾ĞĞ¼ä¾à£©
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = MainAuxFunc,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = MainMenuItems,			//²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_TILES,  		 //èœå•ç±»å‹ä¸ºç£è´´ç±»å‹
+	.General_CursorStyle = NOT_SHOW,			 //å…‰æ ‡ç±»å‹
+	.General_FontSize = OLED_UI_FONT_16,			//å­—é«˜
+	.General_ParentMenuPage = NULL,				//ç”±äºè¿™æ˜¯æ ¹èœå•ï¼Œæ‰€ä»¥çˆ¶èœå•ä¸ºNULL
+	.General_LineSpace = 5,						//ç£è´´é—´è· å•ä½ï¼šåƒç´ ï¼ˆå¯¹äºç£è´´ç±»å‹èœå•ï¼Œæ­¤å€¼è¡¨ç¤ºæ¯ä¸ªç£è´´ä¹‹é—´çš„é—´è·ï¼Œå¯¹äºåˆ—è¡¨ç±»å‹èœå•ï¼Œæ­¤å€¼è¡¨ç¤ºè¡Œé—´è·ï¼‰
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = MainAuxFunc,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = MainMenuItems,			//èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.Tiles_ScreenHeight = 64,					//ÆÁÄ»¸ß¶È
-	.Tiles_ScreenWidth = 128,						//ÆÁÄ»¿í¶È
-	.Tiles_TileWidth = 32,						 //´ÅÌù¿í¶È
-	.Tiles_TileHeight = 32,						 //´ÅÌù¸ß¶È
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.Tiles_ScreenHeight = 64,					//å±å¹•é«˜åº¦
+	.Tiles_ScreenWidth = 128,						//å±å¹•å®½åº¦
+	.Tiles_TileWidth = 32,						 //ç£è´´å®½åº¦
+	.Tiles_TileHeight = 32,						 //ç£è´´é«˜åº¦
 };
 
 
 MenuPage SettingsMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÏßĞÍ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MainMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = SettingAuxFunc,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = SettingsMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºçº¿å‹
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MainMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = SettingAuxFunc,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = SettingsMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {32, 0, 95, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {32, 0, 95, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 };
 
 MenuPage AboutThisDeviceMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_BLOCK,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &SettingsMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = AboutThisDeviceAuxFunc,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = AboutThisDeviceMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_BLOCK,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &SettingsMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = AboutThisDeviceAuxFunc,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = AboutThisDeviceMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 100, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = false,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 100, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = false,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage AboutOLED_UIMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_BLOCK,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &SettingsMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = AboutOLED_UIAuxFunc,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = AboutOLED_UIMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_BLOCK,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &SettingsMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = AboutOLED_UIAuxFunc,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = AboutOLED_UIMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 105, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = false,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 105, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = false,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 MenuPage MoreMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MainMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = MoreMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MainMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = MoreMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {1, 1, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {1, 1, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage Font8MenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_8,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 5,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = Font8MenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_8,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 5,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = Font8MenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage Font12MenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = Font12MenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = Font12MenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage Font16MenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_16,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 5,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = Font16MenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_16,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 5,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = Font16MenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {1, 1, 126, 62},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {1, 1, 126, 62},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage Font20MenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_20,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 10,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = Font20MenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_20,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 10,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = Font20MenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage LongMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = LongMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = LongMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage SpringMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = PID_CURVE,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = SpringMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = PID_CURVE,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = SpringMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage LongListMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 4,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = LongListMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 4,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = LongListMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {0, 0, 128, 64},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = false,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {0, 0, 128, 64},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = false,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 
 MenuPage SmallAreaMenuPage = {
-	//Í¨ÓÃÊôĞÔ£¬±ØÌî
-	.General_MenuType = MENU_TYPE_LIST,  		 //²Ëµ¥ÀàĞÍÎªÁĞ±íÀàĞÍ
-	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //¹â±êÀàĞÍÎªÔ²½Ç¾ØĞÎ
-	.General_FontSize = OLED_UI_FONT_12,			//×Ö¸ß
-	.General_ParentMenuPage = &MoreMenuPage,		 //¸¸²Ëµ¥ÎªÖ÷²Ëµ¥
-	.General_LineSpace = 6,						//ĞĞ¼ä¾à µ¥Î»£ºÏñËØ
-	.General_MoveStyle = UNLINEAR,				//ÒÆ¶¯·½Ê½Îª·ÇÏßĞÔÇúÏß¶¯»­
-	.General_MovingSpeed = SPEED,					//¶¯»­ÒÆ¶¯ËÙ¶È(´ËÖµ¸ù¾İÊµ¼ÊĞ§¹ûµ÷Õû)
-	.General_ShowAuxiliaryFunction = NULL,		 //ÏÔÊ¾¸¨Öúº¯Êı
-	.General_MenuItems = SmallAreaMenuItems,		 //²Ëµ¥ÏîÄÚÈİÊı×é
+	//é€šç”¨å±æ€§ï¼Œå¿…å¡«
+	.General_MenuType = MENU_TYPE_LIST,  		 //èœå•ç±»å‹ä¸ºåˆ—è¡¨ç±»å‹
+	.General_CursorStyle = REVERSE_ROUNDRECTANGLE,	 //å…‰æ ‡ç±»å‹ä¸ºåœ†è§’çŸ©å½¢
+	.General_FontSize = OLED_UI_FONT_12,			//å­—é«˜
+	.General_ParentMenuPage = &MoreMenuPage,		 //çˆ¶èœå•ä¸ºä¸»èœå•
+	.General_LineSpace = 6,						//è¡Œé—´è· å•ä½ï¼šåƒç´ 
+	.General_MoveStyle = UNLINEAR,				//ç§»åŠ¨æ–¹å¼ä¸ºéçº¿æ€§æ›²çº¿åŠ¨ç”»
+	.General_MovingSpeed = SPEED,					//åŠ¨ç”»ç§»åŠ¨é€Ÿåº¦(æ­¤å€¼æ ¹æ®å®é™…æ•ˆæœè°ƒæ•´)
+	.General_ShowAuxiliaryFunction = NULL,		 //æ˜¾ç¤ºè¾…åŠ©å‡½æ•°
+	.General_MenuItems = SmallAreaMenuItems,		 //èœå•é¡¹å†…å®¹æ•°ç»„
 
-	//ÌØÊâÊôĞÔ£¬¸ù¾İ.General_MenuTypeµÄÀàĞÍÑ¡Ôñ
-	.List_MenuArea = {10, 10, 60, 36},			 //ÁĞ±íÏÔÊ¾ÇøÓò
-	.List_IfDrawFrame = true,					 //ÊÇ·ñÏÔÊ¾±ß¿ò
-	.List_IfDrawLinePerfix = true,				 //ÊÇ·ñÏÔÊ¾ĞĞÇ°×º
-	.List_StartPointX = 4,                        //ÁĞ±íÆğÊ¼µãX×ø±ê
-	.List_StartPointY = 2,                        //ÁĞ±íÆğÊ¼µãY×ø±ê
+	//ç‰¹æ®Šå±æ€§ï¼Œæ ¹æ®.General_MenuTypeçš„ç±»å‹é€‰æ‹©
+	.List_MenuArea = {10, 10, 60, 36},			 //åˆ—è¡¨æ˜¾ç¤ºåŒºåŸŸ
+	.List_IfDrawFrame = true,					 //æ˜¯å¦æ˜¾ç¤ºè¾¹æ¡†
+	.List_IfDrawLinePerfix = true,				 //æ˜¯å¦æ˜¾ç¤ºè¡Œå‰ç¼€
+	.List_StartPointX = 4,                        //åˆ—è¡¨èµ·å§‹ç‚¹Xåæ ‡
+	.List_StartPointY = 2,                        //åˆ—è¡¨èµ·å§‹ç‚¹Yåæ ‡
 
 };
 

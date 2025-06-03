@@ -1,1 +1,5 @@
-{}
+{
+    "files.associations": {
+        "iic_oled.h": "c"
+    }
+}
